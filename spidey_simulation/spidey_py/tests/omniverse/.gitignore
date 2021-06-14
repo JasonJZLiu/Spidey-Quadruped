@@ -1,0 +1,3 @@
+#remove crash related files
+*.dmp
+crash
