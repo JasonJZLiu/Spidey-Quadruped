@@ -27,7 +27,6 @@ if __name__ == "__main__":
   CommandGenerator = SpideyWalkingCommandGenerator(desired_EE_poses=None, desired_root_pose=None)
 
 
-
   input("wait")
   init_waypoints += CommandGenerator.default_state()
   init_waypoints += CommandGenerator.move_3_to_IN_init()
@@ -44,7 +43,7 @@ if __name__ == "__main__":
     time.sleep(0.025)
   
 
-  input("wait")
+  #input("wait")
   while True:
     forward_waypoints = []
     forward_waypoints += [CommandGenerator.desired_cmd]
