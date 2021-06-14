@@ -8,6 +8,6 @@
 - MG90 Servos
 
 ### Software:
-- Controlled via trajectory interpolation and inverse kinematics using Drake
+- Controlled via trajectory interpolation and inverse kinematics
 - Simulated in Nvidia Isaac Sim and Drake
 
