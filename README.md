@@ -13,3 +13,7 @@
 
 https://user-images.githubusercontent.com/34286328/121835370-222a5c80-cc9f-11eb-9861-f1847ff82fd1.mp4
 
+### TODO:
+- Implement the ability to rotate
+- Enable remote control
+
