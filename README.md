@@ -11,3 +11,5 @@
 - Controlled via trajectory interpolation and inverse kinematics
 - Simulated in Nvidia Isaac Sim and Drake
 
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
