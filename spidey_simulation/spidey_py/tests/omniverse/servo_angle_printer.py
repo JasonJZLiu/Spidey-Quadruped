@@ -8,7 +8,7 @@ import os, pickle
 
 if __name__ == "__main__":
 
-    spidey_path = os.path.join(os.environ["SPIDEY_ROOT"], "spidey_py/spidey_python/ik_solver/spidey_assets/urdf_and_meshes/spidey_v2.urdf")
+    spidey_path = os.path.join(os.environ["SPIDEY_ROOT"], "spidey_py/spidey_python/ik_solver/spidey_assets/urdf_and_meshes_v3/spidey_v3.urdf")
     spidey_IK_solver = IKSolver(urdf_file = spidey_path, model_name="spidey", root_link_name ="base_link", visualize=False)
     spidey_IK_solver.end_effector_frames = ["leg1_link3_tip","leg2_link3_tip","leg3_link3_tip","leg4_link3_tip"]
 

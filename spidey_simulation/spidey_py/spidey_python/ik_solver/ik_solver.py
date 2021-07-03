@@ -145,6 +145,9 @@ class IKSolver:
       self._print_frame_poses()
       print("\nStates Solution: \n", np.array(q_corrected))
       print ("\nSuccess Flag: ", success_flag, "\n")
+    
+    if success_flag == False:
+      input ("wait")
 
     return np.array(q_corrected)
 

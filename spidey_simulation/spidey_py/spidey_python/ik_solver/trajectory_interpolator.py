@@ -13,7 +13,7 @@ def interpolate_between_waypoints(current_cmd, next_cmd):
   diff_vector_body = next_cmd["desired_base_link_pose"] - current_cmd["desired_base_link_pose"]
 
   body_norm = np.linalg.norm(diff_vector_body)
-  iteration = round(max(leg_norm, body_norm)/0.01)
+  iteration = round(max(leg_norm, body_norm)/0.01)#0.01
 
   increment_vector_leg = []
   for i in range(4):
