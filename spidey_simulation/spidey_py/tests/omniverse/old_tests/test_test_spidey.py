@@ -32,7 +32,7 @@ if __name__ == "__main__":
   init_waypoints += CommandGenerator.move_3_to_IN_init()
   init_waypoints += CommandGenerator.move_1_to_IN_init()
   
-  init_trajectory = interpolate_trajectory(init_waypoints)
+  init_trajectory = init_waypoints
 
   for desired_cmd in init_trajectory:
     reference_spidey_joint_position = SpideyIKSolver.get_ik_solution(desired_EE_poses = desired_cmd["desired_feet_poses"],
@@ -40,29 +40,32 @@ if __name__ == "__main__":
                                                                     q_initial_guess=None,
                                                                     verbose=True)
     SpideyIKSolver.update_meshcat()
-    time.sleep(0.025)
+    input("wait")
   
 
-  #input("wait")
-  while True:
-    forward_waypoints = []
-    forward_waypoints += [CommandGenerator.desired_cmd]
-    forward_waypoints += CommandGenerator.move_1_to_OUT()
-    forward_waypoints += CommandGenerator.move_body_forward()
-    forward_waypoints += CommandGenerator.move_4_to_IN()
-    forward_waypoints += CommandGenerator.move_2_to_OUT()
-    forward_waypoints += CommandGenerator.move_body_forward()
-    forward_waypoints += CommandGenerator.move_3_to_IN()
 
-    forward_trajectory = interpolate_trajectory(forward_waypoints)
+  print(SpideyIKSolver.get_base_and_EE_poses())
+  input("wait")
+  
 
-    for desired_cmd in forward_trajectory:
-      reference_spidey_joint_position = SpideyIKSolver.get_ik_solution(desired_EE_poses = desired_cmd["desired_feet_poses"],
-                                                                      desired_root_pose = desired_cmd["desired_base_link_pose"],
-                                                                      q_initial_guess=None,
-                                                                      verbose=True)
-      SpideyIKSolver.update_meshcat()
-      time.sleep(0.025)
+  forward_waypoints = []
+  forward_waypoints += [CommandGenerator.desired_cmd]
+  forward_waypoints += CommandGenerator.move_1_to_OUT()
+  forward_waypoints += CommandGenerator.move_body_forward()
+  forward_waypoints += CommandGenerator.move_4_to_IN()
+  forward_waypoints += CommandGenerator.move_2_to_OUT()
+  forward_waypoints += CommandGenerator.move_body_forward()
+  forward_waypoints += CommandGenerator.move_3_to_IN()
+
+  forward_trajectory = interpolate_trajectory(forward_waypoints)
+
+  for desired_cmd in forward_trajectory:
+    reference_spidey_joint_position = SpideyIKSolver.get_ik_solution(desired_EE_poses = desired_cmd["desired_feet_poses"],
+                                                                    desired_root_pose = desired_cmd["desired_base_link_pose"],
+                                                                    q_initial_guess=None,
+                                                                    verbose=True)
+    SpideyIKSolver.update_meshcat()
+    time.sleep(0.025)
 
 
 

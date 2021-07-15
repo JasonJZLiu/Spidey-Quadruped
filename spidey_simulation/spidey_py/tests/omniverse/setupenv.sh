@@ -6,7 +6,7 @@
 #     echo "Error: Variable \'SPIDEY_ROOT\' is not set." >/dev/stderr
 # fi
 
-export SPIDEY_ROOT=${HOME}/projects/spidey_development/spidey_v2/spidey_simulation/
+export SPIDEY_ROOT=${HOME}/projects/spidey_development/spidey_v3/spidey_simulation/
 
 export SPIDEY_PY=${SPIDEY_ROOT}/spidey_py
 
@@ -36,7 +36,7 @@ for ext_dirname in ${KIT_PHYSX_PATH}/*; do PYTHONPATH="${PYTHONPATH}:${ext_dirna
 # export it to make it available in the environment
 
 
-PYTHONPATH=$PYTHONPATH:/home/jingzhou/projects/spidey_development/spidey_v2/spidey_simulation/spidey_py
+PYTHONPATH=$PYTHONPATH:/home/jingzhou/projects/spidey_development/spidey_v3/spidey_simulation/spidey_py
 export PYTHONPATH
 
 # define alias for launching simulator

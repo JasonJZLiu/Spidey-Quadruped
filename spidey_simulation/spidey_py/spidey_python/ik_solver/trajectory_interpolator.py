@@ -2,7 +2,7 @@
 import numpy as np
 import copy
 
-def interpolate_between_waypoints(current_cmd, next_cmd):
+def interpolate_between_waypoints(current_cmd, next_cmd, iteration_scale):
   diff_vector_leg = []
   leg_norm = 0
 
@@ -13,7 +13,7 @@ def interpolate_between_waypoints(current_cmd, next_cmd):
   diff_vector_body = next_cmd["desired_base_link_pose"] - current_cmd["desired_base_link_pose"]
 
   body_norm = np.linalg.norm(diff_vector_body)
-  iteration = round(max(leg_norm, body_norm)/0.01)#0.01
+  iteration = round(max(leg_norm, body_norm)/iteration_scale)#0.01
 
   increment_vector_leg = []
   for i in range(4):
@@ -45,7 +45,11 @@ def interpolate_trajectory(waypoints):
   else:
     trajectory = []
     for i in range(len(waypoints)-1):
-      trajectory += interpolate_between_waypoints(waypoints[i], waypoints[i+1])
+      # if the waypoint is the rotate body move, reduce the number of interpolated steps by 10 fold
+      if i == 7 :#and waypoints[i+1]["desired_base_link_pose"][5] != 0:
+        trajectory += interpolate_between_waypoints(waypoints[i], waypoints[i+1], 0.1)
+      else:
+        trajectory += interpolate_between_waypoints(waypoints[i], waypoints[i+1], 0.01)
     
     trajectory.append(waypoints[-1])
   

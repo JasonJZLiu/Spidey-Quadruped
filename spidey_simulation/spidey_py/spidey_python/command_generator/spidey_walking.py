@@ -25,19 +25,19 @@ class SpideyWalkingCommandGenerator:
     def _generate_intermediate_leg_cmd(self, leg_num, previous, desired):
         diff_vec_xy = desired[0:2] - previous[0:2]
         intermediate_EE_cmd_xy = previous[0:2] + diff_vec_xy/2
-        intermediate_EE_cmd = np.concatenate((intermediate_EE_cmd_xy, np.array([0.02, 0, 0, 0])))
+        intermediate_EE_cmd = np.concatenate((intermediate_EE_cmd_xy, np.array([0.06, 0, 0, 0])))
         self._desired_EE_poses[leg_num-1] = intermediate_EE_cmd
         return self.desired_cmd
     
     def _generate_predrop_leg_cmd(self, leg_num, desired):
         predrop_EE_cmd = np.copy(desired)
-        predrop_EE_cmd[2] = 0.01
+        predrop_EE_cmd[2] = 0.04
         self._desired_EE_poses[leg_num-1] = predrop_EE_cmd
         return self.desired_cmd
 
     def _generate_prelift_leg_cmd(self, leg_num, previous):
         prelift_EE_cmd = np.copy(previous)
-        prelift_EE_cmd[2] = 0.012#0.0075
+        prelift_EE_cmd[2] = 0.03#0.0075
         temp = np.copy(self._desired_EE_poses)
         temp[leg_num-1] = prelift_EE_cmd
         return {"desired_feet_poses": temp, "desired_base_link_pose": copy.deepcopy(self._desired_root_pose)}
@@ -51,7 +51,7 @@ class SpideyWalkingCommandGenerator:
                                   np.array([0.14015713198547564, 0.1267210693833176, 8.00769041658933e-07, 0, 0, 0]),
                                   np.array([-0.14015654238159364, -0.12672175768933297, 8.00769041658933e-07, 0, 0, 0]),
                                   np.array([-0.1267214135368667, 0.14015683718416674, 8.00769041658933e-07, 0, 0, 0])]
-        self._desired_root_pose = np.array([0, 0, -0.05, 0, 0, 0]) #-0.065
+        self._desired_root_pose = np.array([0, 0, -0.035, 0, 0, 0]) #-0.065
         return [self.desired_cmd]
 
     def move_3_to_IN_init(self):
