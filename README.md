@@ -13,7 +13,7 @@
 - 18650 Cells
 
 ### Software:
-- Controlled via trajectory interpolation and inverse kinematics
+- Controlled via trajectory interpolation and inverse kinematics (the inverse kinematics solver is based on https://github.com/JasonJZLiu/Kinematic-Tree-IK-Solver)
 - Simulated in Nvidia Isaac Sim and Drake
 - Walking tested on the real robot! ([Video Link](https://www.youtube.com/watch?v=nW5I9bcBE7k))
 
