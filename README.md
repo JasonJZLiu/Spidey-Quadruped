@@ -9,6 +9,8 @@
 - Raspberry Pi 4
 - Adafruit 16-Channel 12-bit PWM/Servo HAT
 - MG90 Servos
+- 20A Buck Converter
+- 18650 Cells
 
 ### Software:
 - Controlled via trajectory interpolation and inverse kinematics
