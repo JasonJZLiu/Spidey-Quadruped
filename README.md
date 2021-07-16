@@ -15,6 +15,7 @@
 ### Software:
 - Controlled via trajectory interpolation and inverse kinematics
 - Simulated in Nvidia Isaac Sim and Drake
+- Walking tested on the real robot! ([Video Link](https://www.youtube.com/watch?v=G61zH5Pxxo4))
 
 https://user-images.githubusercontent.com/34286328/121835370-222a5c80-cc9f-11eb-9861-f1847ff82fd1.mp4
 
