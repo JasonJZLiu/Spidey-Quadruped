@@ -38,10 +38,10 @@ if __name__ == "__main__":
 
 
   num = 0
-  for i in range (4):
+  for i in range (1):
     num += 1
-    if num == 3:
-      CommandGenerator.delta_angle *= -1
+    # if num == 3:
+    #   CommandGenerator.delta_angle *= -1
     trajectory = []
     trajectory += CommandGenerator.turn_CCW_from_right_move_1()
     trajectory += CommandGenerator.turn_CCW_from_right_move_2()

@@ -14,9 +14,12 @@ def interpolate_between_waypoints(current_cmd, next_cmd, iteration_scale):
 
   body_norm = np.linalg.norm(diff_vector_body)
   iteration = round(max(leg_norm, body_norm)/iteration_scale)#0.01
+  if iteration == 0:
+      iteration = 1
 
   increment_vector_leg = []
   for i in range(4):
+    
     increment_vector_leg.append(diff_vector_leg[i]/iteration)
   increment_vector_body = diff_vector_body/iteration
 
@@ -43,11 +46,16 @@ def interpolate_trajectory(waypoints):
   if len(waypoints) < 2:
     print("At least two waypoints are required for trajectory interpolation")
   else:
+    body_turn_flag = False
     trajectory = []
     for i in range(len(waypoints)-1):
       # if the waypoint is the rotate body move, reduce the number of interpolated steps by 10 fold
-      if i == 7 :#and waypoints[i+1]["desired_base_link_pose"][5] != 0:
+      if body_turn_flag == False and i == 6 and waypoints[i+1]["desired_base_link_pose"][5] != 0:
         trajectory += interpolate_between_waypoints(waypoints[i], waypoints[i+1], 0.1)
+        body_turn_flag = True
+      elif body_turn_flag == False and i == 7 and waypoints[i+1]["desired_base_link_pose"][5] != 0:
+        trajectory += interpolate_between_waypoints(waypoints[i], waypoints[i+1], 0.1)
+        body_turn_flag = True
       else:
         trajectory += interpolate_between_waypoints(waypoints[i], waypoints[i+1], 0.01)
     

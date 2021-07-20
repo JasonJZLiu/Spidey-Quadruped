@@ -1,4 +1,4 @@
-from spidey_python.command_generator.spidey_walking import SpideyWalkingCommandGenerator
+from spidey_python.command_generator.spidey_walking import SpideyWalkingCommandGenerator, SpideyTurningCommandGenerator
 from spidey_python.ik_solver import IKSolver, interpolate_between_waypoints, interpolate_trajectory
 
 import numpy as np

@@ -8,7 +8,7 @@ class SpideyTurningCommandGenerator:
         self._desired_EE_poses = desired_EE_poses
         self._desired_root_pose = desired_root_pose
 
-        self.delta_angle = 0.3
+        self.delta_angle = -0.6
         
     @property
     def desired_cmd(self):
@@ -69,7 +69,10 @@ class SpideyTurningCommandGenerator:
         predrop_cmd = self._generate_predrop_leg_cmd(leg_num, desired)
         self._desired_EE_poses[leg_num-1] = desired
         final_cmd = self.desired_cmd
-        return [prelift_cmd, intermediate_cmd, predrop_cmd, final_cmd]
+        if self.delta_angle >= 0:
+            return [prelift_cmd, intermediate_cmd, predrop_cmd, final_cmd]
+        else:
+            return [prelift_cmd, predrop_cmd, final_cmd]
 
     def turn_CCW_from_right_move_2(self):
         if self.delta_angle >= 0:
@@ -115,4 +118,7 @@ class SpideyTurningCommandGenerator:
         predrop_cmd = self._generate_predrop_leg_cmd(leg_num, desired)
         self._desired_EE_poses[leg_num-1] = desired
         final_cmd = self.desired_cmd
-        return [prelift_cmd, intermediate_cmd, predrop_cmd, final_cmd]
+        if self.delta_angle >= 0:
+            return [prelift_cmd, predrop_cmd, final_cmd]
+        else:
+            return [prelift_cmd, intermediate_cmd, predrop_cmd, final_cmd]
