@@ -25,4 +25,5 @@ https://user-images.githubusercontent.com/34286328/125881655-4022c650-8ff9-44ae-
 
 ### TODO:
 - Enable bluetooth remote control
+- Clean up code (comments + docstrings)
 
